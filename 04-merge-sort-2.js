@@ -16,13 +16,6 @@ function merge(arr, first, middle, last) {
     let nextLeft = 0
     let nextRight = 0
     for (let i = first; i <= last; i++) {
-        if(i >= L.length){
-            for(let j = i; j <= last; j++) {
-                arr[j] = R[nextRight]
-                nextRight++
-            }
-            break
-        }
         if (L[nextLeft] <= R[nextRight]) {
             arr[i] = L[nextLeft]
             nextLeft++
@@ -31,6 +24,13 @@ function merge(arr, first, middle, last) {
             arr[i] = R[nextRight]
             nextRight++
         }
+    }
+}
+
+function fillTheRest(dest, destStartIndex, destLastIndex, source, sourceCurrentIndex){
+    for(let i = destStartIndex; i <= destLastIndex; i++){
+        dest[i] = source[sourceCurrentIndex]
+        sourceCurrentIndex++
     }
 }
 
